@@ -1,14 +1,17 @@
 import './App.css';
 import Routes from "./components/Routes";
 import RandomUserContextProvider from "./utils/Context";
+import { BrowserRouter } from "react-router-dom";
 
 
 function App() {
   return (
-		<div className='App'> 
-    <RandomUserContextProvider>
-		    	<Routes />
-    </RandomUserContextProvider>
+		<div className='App'>
+			<BrowserRouter>
+				<RandomUserContextProvider>
+					<Routes />
+				</RandomUserContextProvider>
+			</BrowserRouter>
 		</div>
 	);
 }

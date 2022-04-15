@@ -26,6 +26,7 @@ export default function Routes() {
 					);
 					return (
 						<>
+						        {/* <Header/> */}
 							<SingleCard {...oneItem} />
 						</>
 					);

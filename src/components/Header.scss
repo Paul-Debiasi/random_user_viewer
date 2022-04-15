@@ -1,4 +1,9 @@
 .Header{
     background: rgba(0,102,255,1.0);
-    height: 80px
+    height: 80px;
+    width:100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    
 }

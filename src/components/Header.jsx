@@ -2,15 +2,18 @@ import { useEffect, useContext } from "react";
 import { RandomUserContext } from "../utils/Context";
 import { v4 as uuidv4 } from 'uuid';
 import "./Header.scss";
+import Logo from '../images/demicon_logo.png'
+import { useHistory } from "react-router-dom";
 
 export default function Header() {
+	const history = useHistory()
 	const {
 		setRandomUser,
 		userLocation,
 		toggleLocation,
 	} = useContext(RandomUserContext);
 
-	let more = 10;
+	let more = 5;
 
 	useEffect(() => {
 	const getRandomUser = async () => {
@@ -39,6 +42,7 @@ export default function Header() {
 					view: "View",
 				};
 			});
+console.log("dataTable", dataTable);
 			setRandomUser([...dataTable]);
 
 		} catch (e) {
@@ -53,6 +57,9 @@ export default function Header() {
 
 	return (
 		<div className='Header'>
+			<div>
+				<img onClick={()=> history.push('/')} src={Logo} alt="" />
+			</div>
 			<input
 				onChange={handleSearch}
 				value={userLocation}
