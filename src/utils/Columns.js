@@ -49,24 +49,24 @@ export const Parent_Colums = [
 			{
 				Header: "First Name",
 				Footer: "First Name",
-				accessor: "First",
+				accessor: "first",
 			},
 			{
 				Header: "Last Name",
 				Footer: "Last Name",
-				accessor: "Last",
+				accessor: "last",
 			},
 		],
 	},
 	{
 		Header: "Email",
 		Footer: "Email",
-		accessor: "Email",
+		accessor: "email",
 	},
 	{
 		Header: "Gender",
 		Footer: "Gender",
-		accessor: "Gender",
+		accessor: "gender",
 	},
 	{
 		Header: "Location",
@@ -75,28 +75,28 @@ export const Parent_Colums = [
 			{
 				Header: "City",
 				Footer: "City",
-				accessor: "City",
+				accessor: "city",
 			},
 			{
 				Header: "Country",
 				Footer: "Country",
-				accessor: "Country",
+				accessor: "country",
 			},
 			{
 				Header: "Street",
 				Footer: "Street",
-				accessor: "Street ",
+				accessor: "street ",
 			},
 			{
 				Header: "Number",
 				Footer: "Number",
-				accessor: "Number",
+				accessor: "number",
 			},
 		],
 	},
 	{
 		Header: "View Details",
 		Footer: "View Details",
-		accessor: "View",
+		accessor: "view",
 	},
 ];

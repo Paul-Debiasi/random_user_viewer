@@ -2,10 +2,12 @@ import { useContext, useMemo, useEffect, useState } from "react";
 import { RandomUserContext } from "../utils/Context";
 import { useTable, usePagination } from "react-table";
 import { Parent_Colums } from "../utils/Columns";
+import {Link} from 'react-router-dom'
 import "./Table.scss";
 
 export default function Pagination() {
-	const { randomUser, userLocation } = useContext(RandomUserContext);
+	const { randomUser, userLocation } =
+		useContext(RandomUserContext);
 	const columns = useMemo(() => Parent_Colums, []);
 	const [filteredUser, setFilteredUser] = useState(randomUser);
 
@@ -44,14 +46,14 @@ export default function Pagination() {
 	useEffect(() => {
 
 	const filteredUser = () => {
-		const user = randomUser.filter((item) => item.Country === userLocation);
+		const user = randomUser.filter((item) => item.country === userLocation);
 
 		setFilteredUser(user);
+		
 	};
 
 	filteredUser();
 	}, [userLocation, randomUser])
-	console.log(randomUser)
 
 	return (
 		<div className='tableContainer'>
@@ -78,9 +80,9 @@ export default function Pagination() {
 								{row.cells.map((cell) => {
 									return (
 										<td {...cell.getCellProps()}>
-											{cell.value === "View" ? (
+											{cell.value === "View" ? (							
 												<>
-													<a>{cell.render("Cell")}</a>
+													<Link to={`/view/${row.original.id}`}>{cell.render("Cell")}</Link>
 												</>
 											) : (
 												cell.render("Cell")

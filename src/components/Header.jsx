@@ -19,22 +19,24 @@ export default function Header() {
 		try {
 			const data = await fetch(url);
 			const response = await data.json();
+			console.log(response.results)
 			const newRandomUserObj = [...response.results];
 	
 			const dataTable = newRandomUserObj.map((item) => {
 				return {
 					id : uuidv4(),
-					First: item.name.first,
-					Last: item.name.last,
-					Gender: item.gender,
-					Email: item.email,
-					City: item.location.city,
-					Country: item.location.country,
-					Street: item.location.street.name,
-					Number: item.location.street.number,
-					Latitude: item.location.coordinates.latitude,
-					Longitude: item.location.coordinates.longitude,
-					View: "View",
+					first: item.name.first,
+					last: item.name.last,
+					gender: item.gender,
+					email: item.email,
+					city: item.location.city,
+					country: item.location.country,
+					street: item.location.street.name,
+					number: item.location.street.number,
+					latitude: item.location.coordinates.latitude,
+					longitude: item.location.coordinates.longitude,
+					picture: item.picture.large,
+					view: "View",
 				};
 			});
 			setRandomUser([...dataTable]);
