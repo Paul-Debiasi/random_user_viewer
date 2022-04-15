@@ -5,7 +5,7 @@ import { Parent_Colums } from "../utils/Columns";
 import "./Table.scss";
 
 export default function Pagination() {
-	const { randomUser,user, userLocation } = useContext(RandomUserContext);
+	const { randomUser, userLocation } = useContext(RandomUserContext);
 	const columns = useMemo(() => Parent_Colums, []);
 	const [filteredUser, setFilteredUser] = useState(randomUser);
 
@@ -40,8 +40,6 @@ export default function Pagination() {
 	} = tableInstance;
 
 	const { pageIndex, pageSize } = state;
-	console.log(userLocation);
-	console.log(randomUser)
 
 	useEffect(() => {
 
@@ -52,9 +50,9 @@ export default function Pagination() {
 	};
 
 	filteredUser();
-	}, [userLocation])
+	}, [userLocation, randomUser])
+	console.log(randomUser)
 
-	console.log("filteredUser", filteredUser);
 	return (
 		<div className='tableContainer'>
 			<table
@@ -79,7 +77,15 @@ export default function Pagination() {
 							<tr {...row.getRowProps()}>
 								{row.cells.map((cell) => {
 									return (
-										<td {...cell.getCellProps()}>{cell.render("Cell")}</td>
+										<td {...cell.getCellProps()}>
+											{cell.value === "View" ? (
+												<>
+													<a>{cell.render("Cell")}</a>
+												</>
+											) : (
+												cell.render("Cell")
+											)}
+										</td>
 									);
 								})}
 							</tr>

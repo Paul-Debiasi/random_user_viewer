@@ -1,36 +1,29 @@
-import { useEffect, useContext, useState } from "react";
+import { useEffect, useContext } from "react";
 import { RandomUserContext } from "../utils/Context";
+import { v4 as uuidv4 } from 'uuid';
 import "./Header.scss";
 
 export default function Header() {
 	const {
-		randomUser,
 		setRandomUser,
-		user,
-		setUser,
 		userLocation,
 		toggleLocation,
 	} = useContext(RandomUserContext);
-	const [searchRandomUser, setSearchRandomUser] = useState([]);
-	let more = 100;
 
-	// const handleChange = (e) => {
-	// 	setSearched(e.target.value);
-	// 	// setRandomUser(user)
-	// };
+	let more = 10;
 
 	useEffect(() => {
 	const getRandomUser = async () => {
 		const url = `https://randomuser.me/api/?results=${more}`;
+
 		try {
 			const data = await fetch(url);
 			const response = await data.json();
-			// console.log("Response in API call", response.results);
-			// setSearchRandomUser([...response.results]);
 			const newRandomUserObj = [...response.results];
 	
 			const dataTable = newRandomUserObj.map((item) => {
 				return {
+					id : uuidv4(),
 					First: item.name.first,
 					Last: item.name.last,
 					Gender: item.gender,
@@ -39,55 +32,31 @@ export default function Header() {
 					Country: item.location.country,
 					Street: item.location.street.name,
 					Number: item.location.street.number,
+					Latitude: item.location.coordinates.latitude,
+					Longitude: item.location.coordinates.longitude,
 					View: "View",
 				};
 			});
 			setRandomUser([...dataTable]);
-			console.log("Random User", randomUser);
-			// setUser([...dataTable]);
+
 		} catch (e) {
 			console.log("Error ->", e.message);
 		}
 	};
 		getRandomUser();
+
 	}, []);
 
-	// const handleSearch = () => {
-	// 	if (!searched) return;
-	// 	const filteredRandomUser = [...randomUser];
-	// 	console.log("Random User in seach button", filteredRandomUser);
-	// 	let filterList = filteredRandomUser.filter(
-	// 		(item) =>
-	// 			item.Country.toLowerCase().includes(searched.toLocaleLowerCase()) &&
-	// 			item
-	// 	);
-	// 	setRandomUser([...filterList]);
-	// 	// setSearched("");
-	// };
-
-	const _handleSearch = (event) => {
-		// console.log("event", event.target.value);
-		toggleLocation(event.target.value);
-		// const filteredRandomUser = [...randomUser];
-		// console.log("Random User in seach button", filteredRandomUser);
-		// let filterList = filteredRandomUser.filter(
-		// 	(item) =>
-		// 		item.Country.toLowerCase().includes(searched.toLocaleLowerCase()) &&
-		// 		item
-		// );
-		// setRandomUser([...filterList]);
-		// setSearched("");
-	};
+	const handleSearch = (event) => toggleLocation(event.target.value);
 
 	return (
 		<div className='Header'>
 			<input
-				onChange={_handleSearch}
+				onChange={handleSearch}
 				value={userLocation}
 				type='search'
-				placeholder='Search User'
+				placeholder='Type to filter by country'
 			/>
-			{/* <button onClick={handleSearch}>Search</button> */}
 		</div>
 	);
 }
