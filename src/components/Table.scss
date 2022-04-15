@@ -1,0 +1,27 @@
+.tableContainer{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    .Table{
+      border-collapse:collapse;
+      width:80%;
+      margin-top: 50px;
+
+      thead{
+           background: rgba(0,102,255,1.0);
+           color:white;
+           tr{
+               border: 2px solid white;
+           }
+      }
+      tbody{
+          td{
+                border-bottom: 2px solid rgb(190, 188, 188);
+          }
+      }
+    }
+
+}
