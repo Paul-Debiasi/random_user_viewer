@@ -1,13 +1,22 @@
-import { useContext, useMemo } from "react";
+import { useContext, useMemo, useEffect, useState } from "react";
 import { RandomUserContext } from "../utils/Context";
 import { useTable, usePagination } from "react-table";
 import { Parent_Colums } from "../utils/Columns";
 import "./Table.scss";
 
 export default function Pagination() {
-	const { randomUser,user } = useContext(RandomUserContext);
+	const { randomUser,user, userLocation } = useContext(RandomUserContext);
 	const columns = useMemo(() => Parent_Colums, []);
-	const data = useMemo(() => randomUser, [randomUser]);
+	const [filteredUser, setFilteredUser] = useState(randomUser);
+
+	const data = useMemo(() => {
+		if (filteredUser.length === 0) {
+			return randomUser;
+		}
+
+		return filteredUser;
+	}, [filteredUser, randomUser]);
+	
 	const tableInstance = useTable(
 		{
 			columns,
@@ -31,7 +40,21 @@ export default function Pagination() {
 	} = tableInstance;
 
 	const { pageIndex, pageSize } = state;
-	console.log(randomUser);
+	console.log(userLocation);
+	console.log(randomUser)
+
+	useEffect(() => {
+
+	const filteredUser = () => {
+		const user = randomUser.filter((item) => item.Country === userLocation);
+
+		setFilteredUser(user);
+	};
+
+	filteredUser();
+	}, [userLocation])
+
+	console.log("filteredUser", filteredUser);
 	return (
 		<div className='tableContainer'>
 			<table

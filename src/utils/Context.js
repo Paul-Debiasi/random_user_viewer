@@ -5,6 +5,7 @@ export const RandomUserContext = createContext();
 function RandomUserContextProvider({ children }) {
     const[randomUser,setRandomUser] = useState([])
 	const [user, setUser] = useState([]);
+	const [userLocation, toggleLocation] = useState("");
 	
 
 	return (
@@ -14,6 +15,8 @@ function RandomUserContextProvider({ children }) {
 				setRandomUser,
 				user,
 				setUser,
+				userLocation,
+				toggleLocation,
 			}}
 		>
 			{children}

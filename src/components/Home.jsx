@@ -8,7 +8,7 @@ import Pagination from './Pagination'
 
 export default function Home() {
     const { randomUser } = useContext(RandomUserContext);
-    console.log(randomUser);
+    // console.log(randomUser);
   return (
 		<>
 			<Header />
