@@ -13,7 +13,7 @@ export default function Header() {
 		toggleLocation,
 	} = useContext(RandomUserContext);
 
-	let more = 5;
+	let more = 500;
 
 	useEffect(() => {
 	const getRandomUser = async () => {

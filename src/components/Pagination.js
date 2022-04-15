@@ -43,10 +43,14 @@ export default function Pagination() {
 
 	const { pageIndex, pageSize } = state;
 
+	const capitalize =(str) => str.charAt(0).toUpperCase() + str.slice(1);
+
 	useEffect(() => {
 
 	const filteredUser = () => {
-		const user = randomUser.filter((item) => item.country === userLocation);
+		const user = randomUser.filter(
+			(item) => item.country === capitalize(userLocation)
+		);
 
 		setFilteredUser(user);
 		
