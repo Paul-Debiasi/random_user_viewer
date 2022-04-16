@@ -1,10 +1,10 @@
 import { useContext } from "react";
 import { RandomUserContext } from "../utils/Context";
 import { Switch, Route } from "react-router-dom";
-import Main from "../components/Main";
 import SingleCard from "./SingleCard";
 import Home from "../components/Home";
-import Header from "../components/Header";
+import SingleUserHeader from "./SingleUserHeader";
+import Footer from "./Footer"
 
 export default function Routes() {
 	const { randomUser } = useContext(RandomUserContext);
@@ -24,14 +24,16 @@ export default function Routes() {
 					const oneItem = randomUser.find(
 						(item) => item.id + "" === match.params.id
 					);
+					console.log(oneItem);
 					return (
 						<>
-						        {/* <Header/> */}
+							<SingleUserHeader />
 							<SingleCard {...oneItem} />
+							<Footer/>
 						</>
 					);
 				}}
-			/> 
+			/>
 
 			<Route component={Unknown} />
 		</Switch>

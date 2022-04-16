@@ -1,0 +1,24 @@
+*,
+*::after,
+*::before {
+	margin: 0;
+	box-sizing: border-box;
+}
+
+html {
+	height: 100%;
+}
+body {
+	min-height: 100%;
+	overflow: auto;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	 background:#f2f2f2;
+}
+div#root {
+	min-height: 100vh;
+}
+code {
+	font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+		monospace;
+}

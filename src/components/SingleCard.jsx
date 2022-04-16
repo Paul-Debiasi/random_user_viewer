@@ -1,43 +1,75 @@
-import {useHistory} from 'react-router-dom'
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
-import './SingleCard.scss'
-import "leaflet/dist/leaflet.css";
-import * as L from "leaflet";
+import { useHistory } from "react-router-dom";
+import React, { useState, useEffect, useRef } from "react";
+import { Map, View } from "ol";
+import TileLayer from "ol/layer/Tile";
+import OSM from "ol/source/OSM";
+import { fromLonLat } from "ol/proj";
+import "ol/ol.css";
+import "./SingleCard.scss";
 
-export default function SingleCard({ first, last, latitude , longitude , city, country, street,number,picture }) {
-const  history = useHistory()
+export default function SingleCard({
+	first,
+	last,
+	latitude = 0,
+	longitude = 0,
+	city,
+	country,
+	street,
+	number,
+	picture,
+	email,
+	user,
+	gender,
+}) {
+	const washingtonLonLat = [longitude, latitude];
+	console.log(washingtonLonLat);
+	const washingtonWebMercator = fromLonLat(washingtonLonLat);
+	const history = useHistory();
+	const [map, setMap] = useState();
+	const mapElement = useRef();
+	const mapRef = useRef();
+	mapRef.current = map;
 
-function createIcon(url) {
-	return new L.Icon({
-		iconUrl: url,
-	});
-}
-
+	useEffect(() => {
+		const initialMap = new Map({
+			target: mapElement.current,
+			layers: [
+				new TileLayer({
+					source: new OSM(),
+				}),
+			],
+			view: new View({
+				center: washingtonWebMercator,
+				zoom: 5,
+			}),
+		});
+		setMap(initialMap);
+	}, []);
 	return (
-		<div className='card-container'>
-      <span>{[latitude, longitude]}</span>
-			<h4> {`${first} ${last}`}</h4>
-			<img src={`${picture}`} alt={`${first} ${last}`} />
-			<MapContainer
-				className='leaflet-container'
-				center={[latitude, longitude]}
-				zoom={5}
-			>
-				<TileLayer
-					attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-					url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
+		<div className='cardContainer'>
+			<div className='card'>
+				<h4> {`${first} ${last}`}</h4>
+				<div className='imgContainer'>
+					<img src={`${picture}`} alt={`${first} ${last}`} />
+					<div>
+						<p> {`User Name : ${user}`} </p>
+						<p> {`Gender : ${gender}`} </p>
+						<p> {`Email : ${email}`} </p>
+					</div>
+				</div>
+				<div className='cardInfo'>
+					<p>{`${city} - ${country}`}</p>
+					<p>{`Address: ${street} ${number} `}</p>
+				</div>
+				<div
+					style={{ height: "60%", width: "100%" }}
+					ref={mapElement}
+					className='mapContainer'
 				/>
-				<Marker
-					position={[latitude, longitude]}
-					icon={createIcon(
-						"https://user-images.githubusercontent.com/1596072/85960867-3baf9700-b9af-11ea-854e-7ef6e656d447.png"
-					)}
-				/>
-				
-			</MapContainer>
-			<p>{`${city} - ${country}`}</p>
-			<p>{`Address: ${street} ${number} `}</p>
-			<button onClick={() => history.push("/")}>Back</button>
+			</div>
+			<button className='backButton' onClick={() => history.push("/")}>
+				Back
+			</button>
 		</div>
 	);
 }

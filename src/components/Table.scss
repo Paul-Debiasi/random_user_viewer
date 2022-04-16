@@ -1,37 +1,103 @@
-.tableContainer{
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@300;400&family=Montserrat:wght@100;200;300;400;500&family=Open+Sans:wght@300;400;500;600&family=Work+Sans:wght@300;400;700&display=swap');
+.tableContainer {
+	width: 100%;
+	min-height: 72vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	font-family: Montserrat, sans-serif;
+	background: #f2f2f2;
+	margin: 20px 0 150px 0;
+   
+	.Table {
+		border-collapse: collapse;
+		width: 80%;
+		background: white;
 
-    .Table{
-      border-collapse:collapse;
-      width:80%;
-      margin-top: 50px;
+		thead {
+			background: rgba(0, 102, 255, 1);
+			color: white;
+			tr {
+				border: 2px solid white;
+			}
+		}
+		tbody {
+			border: #f2f2f2;
+			tr {
+				a {
+					color: rgba(0, 102, 255, 1);
+					font-weight: 500;
+				}
+				&:hover {
+					background-color: rgba(0, 102, 255, 1);
+					color: white;
+					a {
+						color: white;
+					}
+				}
+			}
+			td {
+				height: 50px;
+				border-bottom: 3px solid #f2f2f2;
+			}
+		}
+	}
 
-      thead{
-           background: rgba(0,102,255,1.0);
-           color:white;
-           tr{
-               border: 2px solid white;
-           }
-      }
-      tbody{
-          tr{
+    .OptionsContainer{
+        margin-top: 3px;
+	    font-family: Montserrat, sans-serif;
+        background-color: rgba(0, 102, 255, 1);
+        width: 80%;
+        height: 40px;
+        display:grid;
+        grid-template-columns: repeat(9,1fr);
+        .pageOption {
+            grid-column: 5/6;
+            display:flex;
+            justify-content: space-around;
+            align-self: center;
+            button {
+                width: 90px;
+                font-size: 16px;
+                border: none;
+                background:white;
+                color:#001330;
+                font-family: Montserrat, sans-serif;
+            }
+        }
+        .optionSlection{
+            grid-column: 8;
+            justify-self: center;
+            align-self: center;
+            width: 90px;
+            border: none;
+            background-color: #001330;
+            color: white;
+            padding: 2px;
+            font-size: 16px;
+            outline: none;
+            cursor: pointer;
+            &:active{
+                outline: none;
+            }
+            option{
+                font-family: inherit;
+                height:50px;
+                color:white;
+                background-color: #001330;
 
-              &:hover{
-                       background: rgba(0,102,255,1.0);
-                       color:white;
-                       a{
-                                color:white;
-                       }
-              }
-          }
-          td{
-                border-bottom: 2px solid rgb(190, 188, 188);
-          }
-      }
+            }
+
+        }
+        .pageOptionLegth {
+             grid-column: 9;
+            width: 80%;
+            padding-bottom: 4px;
+            color: white;
+            justify-self: center;
+            align-self: center;
+
+        }
     }
-
-}
+    }

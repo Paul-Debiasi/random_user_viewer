@@ -1,4 +1,4 @@
-import './App.css';
+import './App.scss';
 import Routes from "./components/Routes";
 import RandomUserContextProvider from "./utils/Context";
 import { BrowserRouter } from "react-router-dom";
