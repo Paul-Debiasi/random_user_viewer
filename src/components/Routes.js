@@ -4,7 +4,7 @@ import { Switch, Route } from "react-router-dom";
 import SingleCard from "./SingleCard";
 import Home from "../components/Home";
 import SingleUserHeader from "./SingleUserHeader";
-import Footer from "./Footer"
+import Footer from "./Footer";
 
 export default function Routes() {
 	const { randomUser } = useContext(RandomUserContext);
@@ -29,7 +29,7 @@ export default function Routes() {
 						<>
 							<SingleUserHeader />
 							<SingleCard {...oneItem} />
-							<Footer/>
+							<Footer />
 						</>
 					);
 				}}

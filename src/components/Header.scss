@@ -1,28 +1,27 @@
-@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@300;400&family=Montserrat:wght@100;200;300;400;500&family=Open+Sans:wght@300;400;500;600&family=Work+Sans:wght@300;400;700&display=swap');
-
+@import url("https://fonts.googleapis.com/css2?family=Inconsolata:wght@300;400&family=Montserrat:wght@100;200;300;400;500&family=Open+Sans:wght@300;400;500;600&family=Work+Sans:wght@300;400;700&display=swap");
 
 .Header {
-    background: rgba(0, 102, 255, 1);
+	background: rgba(0, 102, 255, 1);
 	height: 8%;
 	width: 100%;
 	display: flex;
 	justify-content: center;
 	.Header_logo_input {
-        width: 80%;
+		width: 80%;
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
 		div {
-            img {
-                cursor: pointer;
+			img {
+				cursor: pointer;
 			}
 		}
 		.input-search {
-            font-family: Montserrat, sans-serif;
-			min-width: 120px;
-			min-height: 30px;
-            font-size: 18px;
-            padding: 4px;
+			font-family: Montserrat, sans-serif;
+			min-width: 100px;
+			min-height: 26px;
+			font-size: 16px;
+			padding: 4px;
 			border: 1px solid grey;
 			&:focus {
 				outline: none;

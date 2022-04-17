@@ -1,63 +1,86 @@
 @import url("https://fonts.googleapis.com/css2?family=Inconsolata:wght@300;400&family=Montserrat:wght@100;200;300;400;500&family=Open+Sans:wght@300;400;500;600&family=Work+Sans:wght@300;400;700&display=swap");
 
 .cardContainer {
-	margin-top: 50px;
 	width: 100%;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
 	font-family: Montserrat, sans-serif;
+	min-height: 84vh;
 	.card {
 		width: 33%;
 		background: white;
 		height: 55vh;
-        display: flex;
-        flex-direction: column;
-        justify-content:center;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		box-shadow: 0 0 20px 1px rgba(206, 206, 206, 0.9);
+		&:hover{
+			transform: scale(1.01);
+			transition: all 500ms ease-in-out;
+		}
 		h4 {
-			background-color: #001330;
+			background-color: rgba(0, 102, 255, 1);
 			color: white;
 			padding: 10px;
-            height:8%;
+			height: 8%;
+			font-size: 22px;
 		}
-        .imgContainer{
-            height: 32%;
-            display:flex;
+		.imgContainer {
+			height: 32%;
+			display: flex;
 
-            img {
-                height:100%;
-                padding: 4px;
-            }
-div{
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    padding-left:20px;
-    justify-content: space-around;
-    background-color: rgba(0, 102, 255, 1);
-    width: 100%;
-    margin: 4px 4px 4px 0;
-    color: white;
-}
-        }
-		.mapContainer {
-            width: 100%;
+			img {
+				height: 100%;
+				padding: 4px;
+			}
+			div {
+				display: flex;
+				flex-direction: column;
+				align-items: flex-start;
+				padding-left: 20px;
+				justify-content: space-around;
+				background-color: white;
+				width: 100%;
+				margin: 4px 4px 4px 0;
+				p {
+					color: black;
+					letter-spacing: 1px;
+					font-weight: 300;
+					span {
+						font-weight: 600;
+					}
+				}
+			}
 		}
-        .cardInfo{
-            background-color: #001330;
+		.mapContainer {
+			width: 100%;
+		}
+		.cardInfo {
+			background-color: rgba(0, 102, 255, 1);
 			color: white;
-            height: 50px;
-        }
+			height: 50px;
+			font-size: 14px;
+			display: flex;
+			flex-direction: column;
+			padding: 4px;
+			align-items: center;
+
+			.countryInfo,
+			p > span {
+				font-weight: 600;
+			}
+		}
 	}
 	.backButton {
 		width: 90px;
 		font-size: 16px;
 		border: none;
 		background-color: rgba(0, 102, 255, 1);
-		color:white;
+		color: white;
 		font-family: Montserrat, sans-serif;
-        margin-top: 10px;
-        border: 1px solid #001330;
+		margin-top: 10px;
+		border: 1px solid white;
 	}
 }

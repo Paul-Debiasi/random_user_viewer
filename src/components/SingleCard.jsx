@@ -52,14 +52,25 @@ export default function SingleCard({
 				<div className='imgContainer'>
 					<img src={`${picture}`} alt={`${first} ${last}`} />
 					<div>
-						<p> {`User Name : ${user}`} </p>
-						<p> {`Gender : ${gender}`} </p>
-						<p> {`Email : ${email}`} </p>
+						<p>
+							<span>User Name :</span> {user}
+						</p>
+						<p>
+							<span>Gender :</span> {gender}
+						</p>
+						<p>
+							<span>Email :</span> {email}
+						</p>
 					</div>
 				</div>
 				<div className='cardInfo'>
-					<p>{`${city} - ${country}`}</p>
-					<p>{`Address: ${street} ${number} `}</p>
+					<p className='countryInfo'>
+						{`${city}, ${country}`}
+						
+					</p>
+					<p>
+						<span>Address</span>: {`${street} ${number} `}
+					</p>
 				</div>
 				<div
 					style={{ height: "60%", width: "100%" }}

@@ -1,103 +1,106 @@
-@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@300;400&family=Montserrat:wght@100;200;300;400;500&family=Open+Sans:wght@300;400;500;600&family=Work+Sans:wght@300;400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inconsolata:wght@300;400&family=Montserrat:wght@100;200;300;400;500&family=Open+Sans:wght@300;400;500;600&family=Work+Sans:wght@300;400;700&display=swap");
 .tableContainer {
 	width: 100%;
-	min-height: 72vh;
+	min-height: 84vh;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
 	font-family: Montserrat, sans-serif;
 	background: #f2f2f2;
-	margin: 20px 0 150px 0;
-   
-	.Table {
-		border-collapse: collapse;
+	.tableAdnButtons {
 		width: 80%;
-		background: white;
-
-		thead {
-			background: rgba(0, 102, 255, 1);
-			color: white;
-			tr {
-				border: 2px solid white;
-			}
-		}
-		tbody {
-			border: #f2f2f2;
-			tr {
-				a {
-					color: rgba(0, 102, 255, 1);
-					font-weight: 500;
+		height: 90%;
+		margin: 100px 0;
+		.Table {
+			border-collapse: collapse;
+			background: white;
+			width: 100%;
+			height: 100%;
+			thead {
+				background: rgba(0, 102, 255, 1);
+				color: white;
+				tr {
+					border: 2px solid white;
 				}
-				&:hover {
-					background-color: rgba(0, 102, 255, 1);
-					color: white;
+			}
+			tbody {
+				border: #f2f2f2;
+				tr {
 					a {
+						color: rgba(0, 102, 255, 1);
+						font-weight: 500;
+					}
+					&:hover {
+						background-color: rgba(0, 102, 255, 1);
 						color: white;
+						a {
+							color: white;
+						}
 					}
 				}
+				td {
+					height: 50px;
+					border-bottom: 3px solid #f2f2f2;
+				}
 			}
-			td {
+		}
+
+		.optionSlection {
+			grid-column: 8;
+			justify-self: center;
+			align-self: center;
+			width: 90px;
+			border: none;
+			background-color: white;
+			border: 1px solid #b0c1d4;
+			color: #97a0ac;
+			padding: 2px;
+			font-size: 16px;
+			outline: none;
+			cursor: pointer;
+			&:active {
+				outline: none;
+			}
+			option {
+				font-family: inherit;
 				height: 50px;
-				border-bottom: 3px solid #f2f2f2;
+				color: #97a0ac;
+				background-color: #001330;
+			}
+		}
+		.pageOptionLegth {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+
+			span {
+				font-size: 15px;
+				color: #444;
+				font-weight: 200;
+			}
+		}
+		.OptionsContainer {
+			margin-top: 3px;
+			font-family: Montserrat, sans-serif;
+			width: 100%;
+			height: 40px;
+			display: flex;
+			justify-content: center;
+			.pageOption {
+				display: flex;
+				justify-content: space-around;
+				align-self: center;
+				button {
+					width: 90px;
+					font-size: 16px;
+					margin: 10px;
+					border: none;
+					color: white;
+					font-family: Montserrat, sans-serif;
+					background-color: rgba(0, 102, 255, 1);
+				}
 			}
 		}
 	}
-
-    .OptionsContainer{
-        margin-top: 3px;
-	    font-family: Montserrat, sans-serif;
-        background-color: rgba(0, 102, 255, 1);
-        width: 80%;
-        height: 40px;
-        display:grid;
-        grid-template-columns: repeat(9,1fr);
-        .pageOption {
-            grid-column: 5/6;
-            display:flex;
-            justify-content: space-around;
-            align-self: center;
-            button {
-                width: 90px;
-                font-size: 16px;
-                border: none;
-                background:white;
-                color:#001330;
-                font-family: Montserrat, sans-serif;
-            }
-        }
-        .optionSlection{
-            grid-column: 8;
-            justify-self: center;
-            align-self: center;
-            width: 90px;
-            border: none;
-            background-color: #001330;
-            color: white;
-            padding: 2px;
-            font-size: 16px;
-            outline: none;
-            cursor: pointer;
-            &:active{
-                outline: none;
-            }
-            option{
-                font-family: inherit;
-                height:50px;
-                color:white;
-                background-color: #001330;
-
-            }
-
-        }
-        .pageOptionLegth {
-             grid-column: 9;
-            width: 80%;
-            padding-bottom: 4px;
-            color: white;
-            justify-self: center;
-            align-self: center;
-
-        }
-    }
-    }
+}

@@ -59,61 +59,52 @@ export default function Pagination() {
 
 	return (
 		<div className='tableContainer'>
-			<table
-				className='Table'
-				cellSpacing='10px'
-				cellPadding='10px'
-				{...getTableProps}
-			>
-				<thead>
-					{headerGroups.map((header) => (
-						<tr {...header.getHeaderGroupProps()}>
-							{header.headers.map((col) => (
-								<th {...col.getHeaderProps()}>{col.render("Header")}</th>
-							))}
-						</tr>
-					))}
-				</thead>
-				<tbody {...getTableBodyProps}>
-					{page.map((row) => {
-						prepareRow(row);
-						return (
-							<tr {...row.getRowProps()}>
-								{row.cells.map((cell) => {
-									return (
-										<td {...cell.getCellProps()}>
-											{cell.value === "View" ? (
-												<>
-													<Link to={`/view/${row.original.id}`}>
-														{cell.render("Cell")}
-													</Link>
-												</>
-											) : (
-												cell.render("Cell")
-											)}
-										</td>
-									);
-								})}
+			<div className='tableAdnButtons'>
+				<table
+					className='Table'
+					cellSpacing='10px'
+					cellPadding='10px'
+					{...getTableProps}
+				>
+					<thead>
+						{headerGroups.map((header) => (
+							<tr {...header.getHeaderGroupProps()}>
+								{header.headers.map((col) => (
+									<th {...col.getHeaderProps()}>{col.render("Header")}</th>
+								))}
 							</tr>
-						);
-					})}
-				</tbody>
-				<tfoot>
-					{footerGroups.map((foot) => (
-						<tr {...foot.getFooterGroupProps()}>
-							{foot.headers.map((col) => (
-								<th {...col.getFooterProps}>
-									{(col.Footer === "Gender" && (
-										<div className='pageOption'>
-											{canPreviousPage && (
-												<button onClick={() => previousPage()}>Previous</button>
-											)}
-											{canNextPage && (
-												<button onClick={() => nextPage()}>Next</button>
-											)}
-										</div>
-									)) ||
-										(col.Footer === "Number" && (
+						))}
+					</thead>
+					<tbody {...getTableBodyProps}>
+						{page.map((row) => {
+							prepareRow(row);
+							return (
+								<tr {...row.getRowProps()}>
+									{row.cells.map((cell) => {
+										return (
+											<td {...cell.getCellProps()}>
+												{cell.value === "View" ? (
+													<>
+														<Link to={`/view/${row.original.id}`}>
+															{cell.render("Cell")}
+														</Link>
+													</>
+												) : (
+													cell.render("Cell")
+												)}
+											</td>
+										);
+									})}
+								</tr>
+							);
+						})}
+					</tbody>
+					<tfoot>
+						{footerGroups.map((foot) => (
+							<tr {...foot.getFooterGroupProps()}>
+								{foot.headers.map((col) => (
+									<th {...col.getFooterProps}>
+										{(col.Footer === "Number" && (
 											<select
 												className='optionSlection'
 												value={pageSize}
@@ -126,28 +117,34 @@ export default function Pagination() {
 												))}
 											</select>
 										)) ||
-										(col.Footer === "View" && (
-											<div className='pageOptionLegth'>
-												<span>{`${pageIndex + 1} of ${
-													pageOptions.length
-												}`}</span>
-											</div>
-										))}
-								</th>
-							))}
-						</tr>
-					))}
-				</tfoot>
-			</table>
-			{/* {randomUser.length > 0 ? (
-				<>
-					<div className='OptionsContainer'>
-						
-						
-						
-					</div>
-				</>
-			) : null} */}
+											(col.Footer === "View" && (
+												<div className='pageOptionLegth'>
+													<span>{`${pageIndex + 1} of ${
+														pageOptions.length
+													}`}</span>
+												</div>
+											))}
+									</th>
+								))}
+							</tr>
+						))}
+					</tfoot>
+				</table>
+				{randomUser.length > 0 ? (
+					<>
+						<div className='OptionsContainer'>
+							<div className='pageOption'>
+								{canPreviousPage && (
+									<button onClick={() => previousPage()}>Previous</button>
+								)}
+								{canNextPage && (
+									<button onClick={() => nextPage()}>Next</button>
+								)}
+							</div>
+						</div>
+					</>
+				) : null}
+			</div>
 		</div>
 	);
 }
