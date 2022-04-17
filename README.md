@@ -18,4 +18,28 @@ can use any Mapping Service e.g. https://wiki.openstreetmap.org/wiki/API_v0.6)
 4. Required Data from https://randomuser.me/api
 
 
+## Execution 
+
+- To achieved the result I used the following:
+    - Create react app to manipulate the DOM
+    - React-table to populate the Table with the data. The UI is self made
+    - The build in fetch to fetch the data from random user API server
+    - The MAP is render base on the Location of the user and realized using OpenstreetMap. Be aware, the Locations are randomly generated. Means that Location and Address do not coincide.
+
+- UI :
+    - Scss for the style.
+    - React icons for the icons
+    - The UI is inspired by DEMICON official web page. I used company color the create continuity in the page, in the same way, font-family, company Logo, and animations.
+
+- Routing :
+    - React router dom 5.3
+
+## Instructions
+
+- Clone the gitHub repo in to your local machine
+- Run 'npm i' in the terminal to install the dependencies
+- Run 'npm start' to run the project
+
+
+
 
