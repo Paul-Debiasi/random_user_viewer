@@ -1,6 +1,7 @@
 import { createContext, useState } from "react";
-
 export const RandomUserContext = createContext();
+
+// Managing the states, it will allow me to have to the props around the app
 
 function RandomUserContextProvider({ children }) {
     const[randomUser,setRandomUser] = useState([])

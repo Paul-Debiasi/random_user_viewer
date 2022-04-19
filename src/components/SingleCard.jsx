@@ -7,6 +7,7 @@ import { fromLonLat } from "ol/proj";
 import "ol/ol.css";
 import "./SingleCard.scss";
 
+// Destructuring the props for Match params id
 export default function SingleCard({
 	first,
 	last,
@@ -21,6 +22,9 @@ export default function SingleCard({
 	user,
 	gender,
 }) {
+
+	// Passing location to openStreetMap and dynamically generating the map. 
+	//Location is random doesn't match with the user address.
 	const washingtonLonLat = [longitude, latitude];
 	console.log(washingtonLonLat);
 	const washingtonWebMercator = fromLonLat(washingtonLonLat);

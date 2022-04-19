@@ -5,11 +5,14 @@ import { Parent_Colums } from "../utils/Columns";
 import { Link } from "react-router-dom";
 import "./Table.scss";
 
+// Using React-table to create a dynamically generated table
 export default function Pagination() {
+	// Calling my state from context API
 	const { randomUser, userLocation } = useContext(RandomUserContext);
+	// Using the Table frame create in utils/Columns
 	const columns = useMemo(() => Parent_Colums, []);
 	const [filteredUser, setFilteredUser] = useState(randomUser);
-
+	// Choosing which state/data pass to the table
 	const data = useMemo(() => {
 		if (filteredUser.length === 0) {
 			return randomUser;
@@ -25,6 +28,7 @@ export default function Pagination() {
 		},
 		usePagination
 	);
+	// Destructuring what is need from React-table to generate it
 	const {
 		getTableProps,
 		getTableBodyProps,
@@ -85,6 +89,7 @@ export default function Pagination() {
 												{...cell.getCellProps()}
 												data-label={cell.column.Header}
 											>
+												{/* Creating the link to single user profile */}
 												{cell.value === "View" ? (
 													<>
 														<Link to={`/view/${row.original.id}`}>
@@ -102,6 +107,7 @@ export default function Pagination() {
 						})}
 					</tbody>
 				</table>
+				{/* The controller of the table */}
 				{randomUser.length > 0 ? (
 					<>
 						<div className='OptionsContainer'>

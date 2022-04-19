@@ -19,6 +19,7 @@ export default function Header() {
 			const data = await fetch(url);
 			const response = await data.json();
 			const newRandomUserObj = [...response.results];
+			// Creating a new object with the key and value needed to populate the table, or the single user card, using uuid to create new ids.
 			const dataTable = newRandomUserObj.map((item) => {
 				return {
 					id: uuidv4(),

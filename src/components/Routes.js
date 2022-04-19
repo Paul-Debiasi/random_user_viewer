@@ -5,7 +5,7 @@ import SingleCard from "./SingleCard";
 import Home from "../components/Home";
 import SingleUserHeader from "./SingleUserHeader";
 import Footer from "./Footer";
-
+// Managing the routes in the App
 export default function Routes() {
 	const { randomUser } = useContext(RandomUserContext);
 	return (
@@ -17,10 +17,7 @@ export default function Routes() {
 				exact
 				path='/view/:id'
 				render={({ match }) => {
-					console.log(
-						"App here: inside route routeProps object is",
-						match.params.id
-					);
+				// Match params id will allow me acceded to the props of a single user base on the id
 					const oneItem = randomUser.find(
 						(item) => item.id + "" === match.params.id
 					);
