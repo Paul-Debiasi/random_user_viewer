@@ -82,7 +82,10 @@ export default function Pagination() {
 								<tr {...row.getRowProps()}>
 									{row.cells.map((cell) => {
 										return (
-											<td {...cell.getCellProps()}>
+											<td
+												{...cell.getCellProps()}
+												data-label={cell.column.Header}
+											>
 												{cell.value === "View" ? (
 													<>
 														<Link to={`/view/${row.original.id}`}>
@@ -99,40 +102,21 @@ export default function Pagination() {
 							);
 						})}
 					</tbody>
-					<tfoot>
-						{footerGroups.map((foot) => (
-							<tr {...foot.getFooterGroupProps()}>
-								{foot.headers.map((col) => (
-									<th {...col.getFooterProps}>
-										{(col.Footer === "Number" && (
-											<select
-												className='optionSlection'
-												value={pageSize}
-												onChange={(e) => setPageSize(Number(e.target.value))}
-											>
-												{[10, 30, 50].map((pages) => (
-													<option key={pages} value={pages}>
-														Show {pages}
-													</option>
-												))}
-											</select>
-										)) ||
-											(col.Footer === "View" && (
-												<div className='pageOptionLegth'>
-													<span>{`${pageIndex + 1} of ${
-														pageOptions.length
-													}`}</span>
-												</div>
-											))}
-									</th>
-								))}
-							</tr>
-						))}
-					</tfoot>
 				</table>
 				{randomUser.length > 0 ? (
 					<>
 						<div className='OptionsContainer'>
+							<select
+								className='optionSelection'
+								value={pageSize}
+								onChange={(e) => setPageSize(Number(e.target.value))}
+							>
+								{[10, 30, 50].map((pages) => (
+									<option key={pages} value={pages}>
+										Show {pages}
+									</option>
+								))}
+							</select>
 							<div className='pageOption'>
 								{canPreviousPage && (
 									<button onClick={() => previousPage()}>Previous</button>
@@ -140,6 +124,9 @@ export default function Pagination() {
 								{canNextPage && (
 									<button onClick={() => nextPage()}>Next</button>
 								)}
+							</div>
+							<div className='pageOptionLength'>
+								<span>{`${pageIndex + 1} of ${pageOptions.length}`}</span>
 							</div>
 						</div>
 					</>

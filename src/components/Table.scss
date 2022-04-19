@@ -9,14 +9,14 @@
 	font-family: Montserrat, sans-serif;
 	background: #f2f2f2;
 	.tableAdnButtons {
-		width: 80%;
-		height: 90%;
+		height: 100%;
 		margin: 100px 0;
 		.Table {
 			border-collapse: collapse;
 			background: white;
 			width: 100%;
 			height: 100%;
+
 			thead {
 				background: rgba(0, 102, 255, 1);
 				color: white;
@@ -28,15 +28,7 @@
 				border: #f2f2f2;
 				tr {
 					a {
-						color: rgba(0, 102, 255, 1);
 						font-weight: 500;
-					}
-					&:hover {
-						background-color: rgba(0, 102, 255, 1);
-						color: white;
-						a {
-							color: white;
-						}
 					}
 				}
 				td {
@@ -46,47 +38,14 @@
 			}
 		}
 
-		.optionSlection {
-			grid-column: 8;
-			justify-self: center;
-			align-self: center;
-			width: 90px;
-			border: none;
-			background-color: white;
-			border: 1px solid #b0c1d4;
-			color: #97a0ac;
-			padding: 2px;
-			font-size: 16px;
-			outline: none;
-			cursor: pointer;
-			&:active {
-				outline: none;
-			}
-			option {
-				font-family: inherit;
-				height: 50px;
-				color: #97a0ac;
-				background-color: #001330;
-			}
-		}
-		.pageOptionLegth {
-			display: flex;
-			justify-content: center;
-			align-items: center;
-
-			span {
-				font-size: 15px;
-				color: #444;
-				font-weight: 200;
-			}
-		}
 		.OptionsContainer {
 			margin-top: 3px;
 			font-family: Montserrat, sans-serif;
 			width: 100%;
 			height: 40px;
 			display: flex;
-			justify-content: center;
+			justify-content: space-around;
+			background-color: rgba(0, 102, 255, 1);
 			.pageOption {
 				display: flex;
 				justify-content: space-around;
@@ -94,13 +53,133 @@
 				button {
 					width: 90px;
 					font-size: 16px;
+					padding: 2px;
 					margin: 10px;
 					border: none;
-					color: white;
+					color: black;
+					border: 1px solid white;
 					font-family: Montserrat, sans-serif;
-					background-color: rgba(0, 102, 255, 1);
+					background: white;
+				}
+			}
+			.optionSelection {
+				grid-column: 8;
+				justify-self: center;
+				align-self: center;
+				width: 90px;
+				border: none;
+				background-color: white;
+				border: 1px solid #b0c1d4;
+				color: #97a0ac;
+				padding: 2px;
+				font-size: 16px;
+				outline: none;
+				cursor: pointer;
+				&:active {
+					outline: none;
+				}
+				option {
+					font-family: inherit;
+					height: 50px;
+					color: #97a0ac;
+					background-color: #001330;
+				}
+			}
+			.pageOptionLength {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+
+				span {
+					font-size: 15px;
+					color: rgb(236, 236, 236);
+					font-weight: 300;
 				}
 			}
 		}
+	}
+}
+
+@media only screen and (min-width: 260px) and (max-device-width: 1080px) {
+	.tableContainer {
+		width: 100%;
+	}
+	.tableAdnButtons {
+		width: 100%;
+	}
+	table {
+		background: #f2f2f2;
+	}
+	table,
+	tbody,
+	th,
+	td,
+	tr {
+		display: block;
+		width: 100%;
+	}
+
+	thead {
+		display: none;
+	}
+	tr {
+		border: 20px solid #f2f2f2;
+		color: black;
+	}
+	td {
+		text-align: right;
+		padding-left: 0%;
+		text-align: right;
+		position: relative;
+		width: 100%;
+		height: 55px;
+		display: flex;
+		justify-content: flex-end;
+		align-items: center;
+		font-size: 12px;
+		&:hover {
+			background-color: rgba(0, 102, 255, 1);
+			color: white;
+			a {
+				color: white;
+			}
+		}
+		a {
+			color: rgba(0, 102, 255, 1);
+		}
+	}
+
+	td::before {
+		content: attr(data-label);
+		position: absolute;
+		left: 0;
+		width: 30%;
+		padding-left: 15px;
+		text-align: left;
+		font-weight: 500;
+		background-color: rgba(0, 102, 255, 1);
+		height: 100%;
+		display: flex;
+		justify-content: flex-start;
+		align-items: center;
+	}
+}
+
+@media only screen and (min-width: 801px) and (max-device-width: 1395px) {
+	.tableContainer {
+		padding: 30px;
+	}
+	.tableAdnButtons {
+		width: 100%;
+	}
+	table {
+	}
+
+	table,
+	tbody,
+	th,
+	td,
+	tr {
+		font-size: 14px;
 	}
 }

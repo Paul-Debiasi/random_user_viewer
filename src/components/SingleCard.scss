@@ -9,14 +9,13 @@
 	font-family: Montserrat, sans-serif;
 	min-height: 84vh;
 	.card {
-		width: 33%;
 		background: white;
 		height: 55vh;
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
 		box-shadow: 0 0 20px 1px rgba(206, 206, 206, 0.9);
-		&:hover{
+		&:hover {
 			transform: scale(1.01);
 			transition: all 500ms ease-in-out;
 		}
@@ -33,20 +32,17 @@
 
 			img {
 				height: 100%;
-				padding: 4px;
 			}
 			div {
 				display: flex;
 				flex-direction: column;
 				align-items: flex-start;
-				padding-left: 20px;
 				justify-content: space-around;
 				background-color: white;
 				width: 100%;
-				margin: 4px 4px 4px 0;
 				p {
 					color: black;
-					letter-spacing: 1px;
+
 					font-weight: 300;
 					span {
 						font-weight: 600;
@@ -82,5 +78,80 @@
 		font-family: Montserrat, sans-serif;
 		margin-top: 10px;
 		border: 1px solid white;
+	}
+}
+
+@media only screen and (min-width: 1396px) {
+	.App {
+		text-align: left;
+	}
+	.card {
+		width: 33%;
+	}
+	.imgContainer {
+		img {
+			padding: 4px;
+		}
+
+		div {
+			padding-left: 20px;
+			margin: 4px 4px 4px 0;
+			letter-spacing: 1px;
+		}
+	}
+}
+@media only screen and (min-width: 801px) and (max-device-width: 1395px) {
+	.card {
+		width: 50%;
+	}
+	.imgContainer {
+		font-size: 16px;
+		padding-left: 2px;
+		img {
+			height: 100%;
+			padding: 4px;
+		}
+
+		div {
+		}
+	}
+}
+
+@media only screen and (min-width: 521px) and (max-width: 860px) {
+	.card {
+		width: 66%;
+	}
+	.imgContainer {
+		height: 32%;
+		display: flex;
+		font-size: 16px;
+		img {
+			height: 100%;
+		}
+		div {
+			display: flex;
+			flex-direction: column;
+			align-items: flex-start;
+			padding-left: 5px;
+			justify-content: space-around;
+			background-color: white;
+			width: 100%;
+			margin: 4px 4px 4px 0;
+		}
+	}
+}
+
+@media only screen and (max-width: 670px) {
+	.card {
+		width: 90%;
+	}
+	img {
+		width: 35%;
+	}
+	p {
+		font-size: 14px;
+		span {
+			font-size: 14px;
+		}
 	}
 }

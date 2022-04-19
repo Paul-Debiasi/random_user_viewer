@@ -85,7 +85,7 @@ export const Parent_Colums = [
 			{
 				Header: "Street",
 				Footer: "",
-				accessor: "street ",
+				accessor: "street",
 			},
 			{
 				Header: "Number",

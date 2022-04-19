@@ -18,9 +18,7 @@ export default function Header() {
 		try {
 			const data = await fetch(url);
 			const response = await data.json();
-			console.log(response.results);
 			const newRandomUserObj = [...response.results];
-
 			const dataTable = newRandomUserObj.map((item) => {
 				return {
 					id: uuidv4(),
@@ -39,7 +37,6 @@ export default function Header() {
 					view: "View",
 				};
 			});
-			console.log("dataTable", dataTable);
 			setRandomUser([...dataTable]);
 		} catch (e) {
 			console.log("Error ->", e.message);
