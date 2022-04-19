@@ -24,7 +24,6 @@ export default function Routes() {
 					const oneItem = randomUser.find(
 						(item) => item.id + "" === match.params.id
 					);
-					console.log(oneItem);
 					return (
 						<>
 							<SingleUserHeader />

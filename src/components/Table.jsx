@@ -29,7 +29,6 @@ export default function Pagination() {
 		getTableProps,
 		getTableBodyProps,
 		headerGroups,
-		footerGroups,
 		page,
 		nextPage,
 		canNextPage,

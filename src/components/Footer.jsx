@@ -1,5 +1,5 @@
 import DarkLogo from "../images/demicon_dark.png";
-import { Link } from "react-router-dom";
+
 import {
 	FaFacebookF,
 	FaTwitter,
