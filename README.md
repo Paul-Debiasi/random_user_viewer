@@ -1,4 +1,4 @@
-# DEMICON's Task
+# Task
 
 ## Random User Viewer
 
