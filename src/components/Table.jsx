@@ -5,7 +5,7 @@ import { Parent_Colums } from "../utils/Columns";
 import { Link } from "react-router-dom";
 import "./Table.scss";
 
-// Using React-table to create a dynamically generated table
+	// Using React-table to create a dynamically generated table
 export default function Pagination() {
 	// Calling my state from context API
 	const { randomUser, userLocation } = useContext(RandomUserContext);
@@ -28,7 +28,7 @@ export default function Pagination() {
 		},
 		usePagination
 	);
-	// Destructuring what is need from React-table to generate it
+	// Destructuring what is needed from React-table to generate it
 	const {
 		getTableProps,
 		getTableBodyProps,
@@ -107,7 +107,7 @@ export default function Pagination() {
 						})}
 					</tbody>
 				</table>
-				{/* The controller of the table */}
+				{/* The table's controllers */}
 				{randomUser.length > 0 ? (
 					<>
 						<div className='OptionsContainer'>

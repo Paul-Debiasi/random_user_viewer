@@ -1,5 +1,6 @@
-import { useHistory } from "react-router-dom";
-import React, { useState, useEffect, useRef } from "react";
+import { useHistory, useParams } from "react-router-dom";
+import { useState, useEffect, useRef, useContext } from "react";
+import { RandomUserContext } from "../utils/Context";
 import { Map, View } from "ol";
 import TileLayer from "ol/layer/Tile";
 import OSM from "ol/source/OSM";
@@ -8,26 +9,30 @@ import "ol/ol.css";
 import "./SingleCard.scss";
 
 // Destructuring the props for Match params id
-export default function SingleCard({
-	first,
-	last,
-	latitude = 0,
-	longitude = 0,
-	city,
-	country,
-	street,
-	number,
-	picture,
-	email,
-	user,
-	gender,
-}) {
-
-	// Passing location to openStreetMap and dynamically generating the map. 
+const defaultUser = {
+	latitude: 0,
+	longitude: 0,
+};
+export default function SingleCard() {
+	// Passing location to openStreetMap and dynamically generating the map.
 	//Location is random doesn't match with the user address.
-	const washingtonLonLat = [longitude, latitude];
-	console.log(washingtonLonLat);
-	const washingtonWebMercator = fromLonLat(washingtonLonLat);
+	const [singleUser, setSingleUser] = useState(defaultUser);
+	const { id } = useParams();
+	const { randomUser } = useContext(RandomUserContext);
+	const {
+		first,
+		last,
+		picture,
+		user,
+		gender,
+		email,
+		city,
+		country,
+		number,
+		street,
+		latitude,
+		longitude,
+	} = singleUser;
 	const history = useHistory();
 	const [map, setMap] = useState();
 	const mapElement = useRef();
@@ -35,6 +40,9 @@ export default function SingleCard({
 	mapRef.current = map;
 
 	useEffect(() => {
+		const washingtonLonLat = [longitude, latitude];
+		const washingtonWebMercator = fromLonLat(washingtonLonLat);
+		mapElement.current.innerHTML = ""; // Making sure all the time we set a new map the HTML is empty
 		const initialMap = new Map({
 			target: mapElement.current,
 			layers: [
@@ -48,7 +56,12 @@ export default function SingleCard({
 			}),
 		});
 		setMap(initialMap);
-	}, []);
+	}, [longitude, latitude]);
+
+	useEffect(() => {
+		setSingleUser(randomUser.find((item) => item.id === id) ?? defaultUser);
+	}, [randomUser, id]);
+	console.log("Single user in single card", singleUser);
 	return (
 		<div className='cardContainer'>
 			<div className='card'>
@@ -68,10 +81,7 @@ export default function SingleCard({
 					</div>
 				</div>
 				<div className='cardInfo'>
-					<p className='countryInfo'>
-						{`${city}, ${country}`}
-						
-					</p>
+					<p className='countryInfo'>{`${city}, ${country}`}</p>
 					<p>
 						<span>Address</span>: {`${street} ${number} `}
 					</p>
@@ -82,7 +92,7 @@ export default function SingleCard({
 					className='mapContainer'
 				/>
 			</div>
-			<button className='backButton' onClick={() => history.push("/")}>
+			<button className='backButton' onClick={() => history.goBack()}>
 				Back
 			</button>
 		</div>
